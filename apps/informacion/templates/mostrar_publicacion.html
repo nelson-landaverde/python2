@@ -1,0 +1,96 @@
+{% extends 'inicio.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+{% block css %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/informacion/publicacion.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<title></title>
+</head>
+{% endblock css %}
+<body>
+		{% block navbar %}
+			{{block.super}}
+		{% endblock navbar %}
+
+		{% block slider %}
+			<section>
+			<div class="slider">
+	        <ul class="slides">
+	            <li>
+	                <img src="{% static 'img/contactar.png' %}" class="responsive-img">
+	                <div class="caption left-align">
+	                    <h3>Publicaciones de reportes</h3>
+
+	                    <h5 class="light grey-text text-lighten-3">en esta seccion encontrara reportes del ministerio.</h5>
+	                </div>
+	            </li>
+	        </ul>
+		    </div>
+			</section>
+		{% endblock slider %}
+
+		{% block servicio %}
+			<section class="center-align"><br><br>
+			<h3 class="teal-text text-accent-4">Publicaciones</h3>
+			<h5>puede descargar los documentos de las publicaciones</h5>
+				{% if is_paginated %}
+					<ul class="pagination">
+					{% if page_obj.has_previous %}
+			    	<li>
+			        	<span><a href="?page={{ page_obj.previous_page_number }}" class="blue-text text-accent-4">Previo</a></span>
+			    	</li>
+					{% endif %}
+			    		<li class="">
+			    	    	<span>Paginas {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</span>
+			    		</li>
+					{% if page_obj.has_next %}
+			    		<li>
+			        		<span><a href="?page={{ page_obj.next_page_number }} " class="blue-text text-accent-4">Siguiente</a></span>
+			    		</li>
+					{% endif %}
+					</ul>
+				{% endif %}
+			<div class="row">
+
+				{% if object_list %}
+				{% for object in object_list %}
+				  <div class="col s12 m6 offset-m3 l6 offset-l3">
+                      <div class="card scrollspy" id="servicios">
+                        <div class="card-content black-text">
+                          <span class="card-title">titulo: {{object.titulo}}</span>
+                          <p>descripcion: {{object.descripcion}}</p>
+                        </div>
+                        <div class="card-action teal accent-3">
+                            <a class="white-text">creado: {{object.creacion}}</a><br>
+                         	<a href="{% url 'principal:ver_documento' object.id %}" class="white-text"><i class="material-icons white-text">library_books</i> abrir documento: {{object.archivo|cut:"publicaciones/"}}</a>
+                        </div>
+                      </div>
+			        </div>	
+			    {% endfor %}
+				{% else %}
+					<p> no hay registros aun </p>
+				{% endif %}
+			</div>
+			</section>
+			
+		{% endblock servicio %}
+
+		{% block footer %}
+			{{block.super}}
+		{% endblock footer %}
+
+			{% block modal %}
+			{% endblock modal %}
+
+		{% block js %}
+			{{block.super}}
+		{% endblock js %}
+</body>
+</html>
+

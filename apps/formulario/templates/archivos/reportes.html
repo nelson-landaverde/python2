@@ -1,0 +1,78 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
+	<title></title>
+</head>
+<body>
+	<style type="text/css">
+		h1 {
+			font-size: 30;
+			font-family: 'Open Sans';
+			text-align: center;
+		}
+
+		table {
+			font-size: 10;
+			padding: 5px;
+			font-family: 'Open Sans';
+			text-align: center;
+			border: solid 1px #000;
+		}
+		th{
+			color: red;
+		}
+    h2 , li{
+      font-size: 20;
+      font-family: 'Open Sans';
+      text-align: center;
+    }
+    ul li{
+      list-style-type: none;
+    }
+    div{
+      font-size: 15;
+      font-family: 'Open Sans';
+      text-align: right;
+    }
+
+	</style>
+
+	<header>
+	<br><br><br><br><br><h1>Reporte de solicitud de servicios</h1>
+	 <table class="striped centered">
+        <thead>
+          <tr>
+              <th data-field="id">Nombre</th>
+              <th data-field="name">Correo</th>
+              <th data-field="price">Telefono</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <td>{{instance.0}}</td>
+            <td>{{instance.1}}</td>
+            <td>{{instance.2}}</td>
+          </tr>
+        </tbody>
+      </table>
+      </header>
+
+     <section class="align-center">
+     <br><h2>Servicios solicitados por el cliente:</h2>
+     <ul>
+     	<li>{{instance.3}}</li>
+     </ul>
+     </section>
+
+     <div class="align-right">
+     <br><br><br><br><br><br>
+     <p>Empresa eric San Salvador</p>
+     <p>documento creado el {{instance.4}}</p>
+     </div>
+</body>
+</html>

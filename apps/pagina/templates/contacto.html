@@ -1,0 +1,81 @@
+{% extends "inicio.html" %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ES">
+{% block css %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/pagina/contacto.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<title></title>
+</head>
+{% endblock css %}
+<body class="teal accent-3">
+
+
+			{% block navbar %}
+				{{block.super}}
+			{% endblock navbar %}
+
+
+			{% block slider %}
+				<section>
+				<div class="slider">
+			        <ul class="slides">
+			            <li>
+			                <img src="{% static 'img/contactar.png' %}" class="responsive-img">
+			                <div class="caption left-align">
+			                    <h3>Formulario de contacto</h3>
+			                    <h5 class="light grey-text text-lighten-3">dejenos una sugerencia para ponernos en contacto.</h5>
+			                    <h5 class="light grey-text text-lighten-3"></h5>
+			                </div>
+			            </li>
+			        </ul>
+			    </div>
+			    </section>
+			{% endblock slider %}
+
+			{% block servicio %}
+					<section class="center-align">
+				      {% autoescape on %}
+				      <h3 class="teal-text text-accent-4">Contactanos</h3>
+				      <div class="row">
+				          
+				          <div class="col s12 m10 offset-m1 l6 offset-l3 ">
+				            <div class="card">
+				              <div class="card-content black-text">
+				                <span class="card-title">Envie sus sugerencias por este formulario</span>
+				                    <form method="POST" action="">
+				                      {% csrf_token %}
+				                        {{form.nombre}}
+				                        {{form.correo}}
+				                        {{form.mensaje}}
+				              </div>
+				              <div class="card-action">
+				                <button class="btn teal accent-4" type="submit">Enviar</button>
+				              </div>
+				                </form>
+				            </div>
+				          </div>
+
+				      </div>
+				      {% endautoescape %}
+				    </section>
+			{% endblock servicio %}
+
+			{% block footer %}
+				{{block.super}}
+			{% endblock footer %}
+		
+				{% block modal %}
+				{% endblock modal %}
+	
+	{% block js %}
+		{{block.super}}
+		<script src="{% static 'js/pagina/contacto.js' %}"></script>
+	{% endblock js %}
+</body>
+</html>

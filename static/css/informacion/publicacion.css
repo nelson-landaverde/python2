@@ -1,0 +1,47 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Open Sans'
+}
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+
+.card{
+	border: 1px solid #cfd8dc;
+}
+
+.card-content p{
+	height: 50px;
+	max-height: 200px;
+	overflow: auto;
+}
+
+.facebook{
+	background-color: transparent;
+	border:1px solid #eeeeee;
+	height: 30px;
+	font-size: 13px;
+	width: 115px;
+}
+
+.twitter{
+	background-color: transparent;
+	border: 1px solid #eeeeee;
+	height: 30px;
+	font-size: 13px;
+}
+
+.facebook:hover{
+	background-color: #01579b;
+}
+
+.twitter:hover{
+	background-color: #039be5;
+}

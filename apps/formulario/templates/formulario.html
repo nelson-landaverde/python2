@@ -1,0 +1,96 @@
+{% extends 'inicio.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='ES'>
+{% block css %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/formulario/formulario.css'%}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="styleshet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<title></title>
+</head>
+{% endblock css %}
+<body>
+
+	{% block navbar %}
+		{{block.super}}
+	{% endblock navbar %}
+
+	{% block slider %}
+			<section>
+			<div class="slider">
+		        <ul class="slides">
+		            <li>
+		                <img src="{% static 'img/contabilidad.png' %}">
+		                <div class="caption left-align">
+		                    <h3>Formulario de servicios</h3>
+		                    <h5 class="light grey-text text-lighten-3">inicie su proyecto a ser escalable.</h5>
+		                </div>
+		            </li>
+		        </ul>
+		    </div>
+		    </section>
+	{% endblock slider %}
+
+	{% block servicio %}
+		<section class="center-align">
+			<h3 class="teal-text text-accent-4">Solicitud de servicios</h3>
+			<h5>si usted esta interesado en alguno de nuestros servicios porfavor rellene el formulario</h5>
+			<div class="container">
+				<div class="row">
+					
+					 <div class="col s12 m6 offset-m3 l6 offset-l3">
+                      <div class="card">
+                        <div class="card-content black-text">
+                          <span class="card-title">Datos personales</span>
+	                  		{% autoescape on %}
+								<form method="POST", action="">
+									{% csrf_token %}
+									 <div class="input-field col s12 m6 l6">
+          								{{form.nombre}}
+        							</div>
+							        <div class="input-field col s12 m6 l6">
+							          {{form.correo}}
+							        </div>
+									{{form.telefono}}	
+									<section class="center-align">
+									<span class="card-title">Tipo de Servicio</span>
+									<div class="row">
+										
+										{% for radio in form.servicio %}
+										<div class=" col s6 m6 l6 servicios">
+									        {{ radio.tag }}
+									        <label for="value_{{ forloop.counter0 }}">{{ radio }}</label>
+									    </div>
+										{% endfor %}
+									</div>
+								<button type="submit" class="btn teal accent-4">Enviar</button>
+								</section>
+								</form>
+							{% endautoescape %}
+                        </div>
+                      </div>
+                    </div>
+
+    	
+
+				</div>
+			</div>
+		</section>
+	{% endblock servicio %}
+
+	{% block footer %}
+		{{block.super}}
+	{% endblock footer %}
+
+	{% block modal %}
+	{% endblock modal %}
+
+	{% block js %}
+		{{block.super}}
+	{% endblock js %}
+</body>
+</html>

@@ -1,0 +1,32 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Open Sans'
+}
+.banner {
+	height: 250px;
+}
+.card{
+	margin-top: -140px;
+}
+input.titulo{
+	border-bottom: 1px solid #00bfa5;
+}
+textarea.descripcion{
+	border: 1px solid #00bfa5;
+	width: 100%;
+	max-width: 100%;
+	height: 100px;
+	max-height: 100px;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #607d8b;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 a 18 */
+   color:    #00bfa5;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #00bfa5;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #00bfa5;
+}

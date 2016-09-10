@@ -1,0 +1,102 @@
+{% extends 'inicio.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ES">
+{% block css %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/formulario/backend_form.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+  	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<title></title>
+</head>
+{% endblock css %}
+<body>
+
+	{% block navbar %}
+		{{block.super}}
+	{% endblock navbar %}
+
+	{% block slider %}
+	{% endblock slider %}
+
+	{% block servicio %}
+		{% block content %}
+		{% autoescape on %}
+		<section class="teal accent-4 banner center-align"><br>
+          <h3 class="white-text"> Administracion Formularios </h3>
+          <div class="row">
+			<form method="GET" action="">
+				<div class="input-field col s10 offset-s1 m6 l3 offset-l4">
+					<input type="text" name="q" placeholder="buscar..." value="{{request.GET.q}}" class="put">
+					<input type="submit" value="buscar" class="btn white blue-text text-accent-4 boton">
+				</div>
+			</form>
+			</div>
+      </section><br>
+
+      	<article class="center-align">
+      		<h3 class="teal-text text-accent-4">Formularios de solictud</h3>
+      		<h5>revise las solicitudes de sus clientes </h5>
+		      	{% if is_paginated %}
+				<ul class="pagination">
+				{% if page_obj.has_previous %}
+		    	<li>
+		        	<span><a href="?page={{ page_obj.previous_page_number }}&q={{request.GET.q}}">Previo</a></span>
+		    	</li>
+				{% endif %}
+		    		<li class="">
+		    	    	<span>Paginas {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}.</span>
+		    		</li>
+				{% if page_obj.has_next %}
+		    		<li>
+		        		<span><a href="?page={{ page_obj.next_page_number }}&q={{request.GET.q}}">Siguiente</a></span>
+		    		</li>
+				{% endif %}
+				</ul>
+				{% endif %}
+
+			{% if object_list %}
+			{% for object in object_list %}
+			<div class="row">
+				 <div class="col s10 offset-s1 m6 offset-m3 l6 offset-l3">
+	              <div class="card">
+	                <div class="card-content black-text">
+	                  <span class="card-title">Nombre: {{object.nombre}}</span>
+	                  <p>Creacion: {{object.creacion}}</p>
+	                  <p>Correo: {{object.correo}}</p>
+	                  <p>Telefono: {{object.telefono}}</p>
+	                  
+	                </div>
+	                <div class="card-action">
+	                  <a href="{% url 'principal:detalle' object.id %}" class="blue-text text-accent-3 "><i class=" material-icons">library_books</i> Reporte: {{object.reporte|cut:"reportes/"}}</a>
+	                  <a href="{% url 'principal:delete' object.id %}" class="btn red accent-3"><i class="left material-icons">delete</i>Eliminar</a>
+	                </div>
+	              </div>
+	            </div>
+		        {% endfor %}
+		        </div>
+			{% else %}
+				<h3> no hay registros aun </h3>
+			{% endif %}
+			
+		</article>
+
+
+		{% endautoescape %}
+	{% endblock content %}
+	{% endblock servicio%}
+
+	{% block footer %}
+	{% endblock footer %}
+
+	{% block modal %}
+	{% endblock modal %}
+
+{% block js %}
+	{{block.super}}
+{% endblock js %}
+</body>
+</html>

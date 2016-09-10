@@ -1,0 +1,91 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Open Sans';
+}
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+  }
+
+
+.barra1 {
+	height: 2px;
+	width: 100%;
+	background-color: #1de9b6  ;
+}
+
+.admin{
+	font-size: 13px;
+}
+
+.admin2{
+	font-size: 5px;
+	width: 190px;
+}
+
+.servicio{
+	margin-top: 40px;
+}
+hr{
+	width: 70%;
+	border: 1px solid #1de9b6;
+}
+.hrmovil{
+	width: 70%;
+	border: 1px solid #00bfa5;
+}
+.card{
+	border: 1px solid #b0bec5;
+
+}
+
+.card-content p{
+	height: 70px;
+	max-height: 200px;
+	overflow: auto;
+}
+
+.card-action a:hover {
+	background-color: #e0e0e0;
+}
+
+.contacto {
+	height: 250px;
+	width: 70%;
+	margin: 0 auto;
+}
+
+@media only screen and (min-width: 300px) and (max-width: 1000px){
+	.contacto {
+		height: 250px;
+		width: 100%;
+		margin: 0 auto;
+	}
+}
+.facebook{
+	background-color: transparent;
+	border:1px solid #eeeeee;
+	height: 30px;
+	font-size: 13px;
+	width: 115px;
+}
+
+.twitter{
+	background-color: transparent;
+	border: 1px solid #eeeeee;
+	height: 30px;
+	font-size: 13px;
+}
+
+.facebook:hover{
+	background-color: #01579b;
+}
+
+.twitter:hover{
+	background-color: #039be5;
+}

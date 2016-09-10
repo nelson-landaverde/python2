@@ -1,0 +1,53 @@
+*{
+	box-sizing: border-box;
+	font-family: 'Open Sans';
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #607d8b;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 a 18 */
+   color:    #00bfa5;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    #00bfa5;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    #00bfa5;
+}
+.card{
+	text-align: justify;
+}
+
+input.usuario, input.correo_usuario, input.telefono{
+	border-bottom: 1px solid #00bfa5;
+}
+input.telefono{
+	width: 95%;
+}
+
+input.radio{
+	padding: 10px;
+}
+
+.facebook{
+	background-color: transparent;
+	border:1px solid #eeeeee;
+	height: 30px;
+	font-size: 13px;
+	width: 115px;
+}
+
+.twitter{
+	background-color: transparent;
+	border: 1px solid #eeeeee;
+	height: 30px;
+	font-size: 13px;
+}
+
+.facebook:hover{
+	background-color: #01579b;
+}
+
+.twitter:hover{
+	background-color: #039be5;
+}

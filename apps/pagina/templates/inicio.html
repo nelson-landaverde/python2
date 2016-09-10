@@ -1,0 +1,250 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="ES">
+{% block css %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/pagina/pagina.css'%}">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<title>empresa</title>
+</head>
+{% endblock css %}
+<body>
+
+	<!--menu o navbar de la pagina-->
+  {% block navbar %}
+  <header>
+	<div class="navbar-fixed">
+      <nav class="white">
+      <div class="barra1"></div>
+	    <div class="container">
+		    <div class="nav-wrapper">
+			    <a href="" class="brand-logo blue-grey-text text-blue-grey darken-4">empresa</a>
+                <a href="#" data-activates="mobile-demo" class="button-collapse blue-grey-text text-blue-grey darken-4""><i class="material-icons">menu</i></a>
+			    <ul id="nav-mobile" class="right hide-on-med-and-down">
+			        <li><a href="{% url 'principal:inicio' %}" class="blue-grey-text text-blue-grey darken-4">inicio</a></li>
+                    {% if not user.is_authenticated and not user.is_superuser %}
+			        <li><a href="{% url 'principal:formulario' %}" class="btn teal accent-4 white-text admin">servicios</a></li>
+                    {% else %}
+                    <li><a href="{% url 'principal:formulario' %}" class="blue-grey-text text-blue-grey darken-4">servicios</a></li>
+                    {% endif %}
+                    <li><a href="{% url 'principal:publicaciones' %}" class="blue-grey-text text-blue-grey darken-4">publicaciones</a></li>
+			        {% if user.is_authenticated and user.is_superuser %}
+			        <li><a href="{% url 'principal:backend' %}" class="btn teal accent-4 white-text admin">administracion</a></li>
+			        {% endif %}
+			        <li><a href="{% url 'principal:contacto' %}" class="blue-grey-text text-blue-grey darken-4">contactar</a></li>
+			    </ul>
+
+        <section class="side-nav" id="mobile-demo">
+            <div><h4 class="teal-text text-accent-4 center-align">Menu movil</h4><hr class="hrmovil"></div>
+              <ul>
+                <li><a href="{% url 'principal:inicio' %}" class="blue-grey-text text-blue-grey darken-4"><i class="material-icons left">menu</i>inicio</a></li>
+                <li><a href="{% url 'principal:formulario' %}" class="blue-grey-text text-blue-grey darken-4"><i class="material-icons left">work</i>servicios</a></li>
+                <li><a href="{% url 'principal:contacto' %}" class="blue-grey-text text-blue-grey darken-4"><i class="material-icons left">description</i>publicaciones</a></li>
+                {% if user.is_authenticated and user.is_superuser %}
+                <li><a href="{% url 'principal:backend' %}" class="teal-text text-accent-4"><i class="material-icons left">dashboard</i>administracion</a></li>
+                {% endif %}
+                <li><a href="{% url 'principal:contacto' %}" class="blue-grey-text text-blue-grey darken-4"><i class="material-icons left">contacts</i>contactar</a></li>
+              </ul>
+        </section>
+
+		    </div>
+	    </div>
+      </nav>
+	</div>
+  </header>
+  {% endblock navbar %}
+
+  {% block slider %}
+  <section>
+	<div class="slider">
+        <ul class="slides">
+            <li>
+                <img src="{% static 'img/contabilidad.png' %}">
+                <div class="caption left-align">
+                    <h3>Contabilidad</h3>
+                    <h5 class="light grey-text text-lighten-3">vinculamos un entorno contable a su proyecto.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="{% static 'img/auditoria.png' %}">
+                <div class="caption left-align">
+                    <h3>Finanzas</h3>
+                    <h5 class="light grey-text text-lighten-3">financeando proyectos en grande.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="{% static 'img/finanzas.png' %}">
+                <div class="caption left-align">
+                    <h3>Auditoria</h3>
+                    <h5 class="light grey-text text-lighten-3">promocionar auditoria de garantia.</h5>
+                </div>
+            </li>
+            <li>
+                <img src="{% static 'img/consultoria.png' %}">
+                <div class="caption left-align">
+                    <h3>Consultoria</h3>
+                    <h5 class="light grey-text text-lighten-3">consultados sus dudas.</h5>
+                </div>
+            </li>
+        </ul>
+    </div>
+    </section>
+    {% endblock slider %}
+
+    {% block servicio %}
+    <article class="center-align servicio">
+        <h3 class="teal-text text-accent-4"> Servicios </h3><hr><br>
+        <section>
+                <div class="container">
+                 <div class="row">
+
+                    <div class="col s12 m6 l6">
+                      <div class="card scrollspy" id="servicios">
+                        <div class="card-content black-text">
+                          <span class="card-title">Contabilidad <i class="material-icons teal-text text-accent-4">assessment</i></span>
+                          <p>I am a very simple card. I am good at containing small bits of information.
+                          I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="#modal1" class="orange-text text-accent-4 link modal-trigger ">Ver solicitud de oferta</a>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col s12 m6 l6">
+                      <div class="card">
+                        <div class="card-content black-text">
+                          <span class="card-title">Finanzas <i class="material-icons teal-text text-accent-4">trending_up</i></span>
+                          <p>I am a very simple card. I am good at containing small bits of information.
+                          I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#modal2" class="orange-text text-accent-4 link modal-trigger ">Ver solicitud de oferta</a>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="col s12 m6 l6">
+                      <div class="card">
+                        <div class="card-content black-text">
+                          <span class="card-title">Consultoria <i class="material-icons teal-text text-accent-4">work</i></span>
+                          <p>I am a very simple card. I am good at containing small bits of information.
+                          I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#modal3" class="orange-text text-accent-4 link modal-trigger ">Ver solicitud de oferta</a>
+                        </div>
+                      </div>
+                    </div>
+
+                     <div class="col s12 m6 l6">
+                      <div class="card">
+                        <div class="card-content black-text">
+                          <span class="card-title">Auditoria <i class="material-icons teal-text text-accent-4">business</i></span>
+                          <p>I am a very simple card. I am good at containing small bits of information.
+                          I am convenient because I require little markup to use effectively.</p>
+                        </div>
+                        <div class="card-action">
+                          <a href="#modal4" class="orange-text text-accent-4 link modal-trigger ">Ver solicitud de oferta</a>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                  </div>
+        </section>
+    </article><br>
+    {% endblock servicio %}
+
+    {% block footer %}
+     <footer class="page-footer teal accent-4">
+          <div class="container">
+                <div class="row">
+                    <div class="col l5 s12">
+                        <h5 class="white-text">Contenido informativo</h5>
+                        <p class="grey-text text-lighten-4"> Correo de contacto: empresa@hotmail.com</p>
+                        <p class="grey-text text-lighten-4"> Telefono de contacto: 25625580</p>
+                    </div>
+                     <div class="col l5 s12">
+                        <h5 class="white-text">Direccion</h5>
+                        <p class="grey-text text-lighten-4"> Sucursal colonias bonitas de el salvador</p>
+                        <p class="grey-text text-lighten-4"> residencial mi casa :v</p>
+                    </div>
+                <div class="col l2  s12">
+                    <h5 class="white-text">Siguenos en</h5>
+                    <section class="container">
+                      <p><a class="twitter btn white-text" href="https://twitter.com/?lang=es">Twitter</a></p>
+                      <p><a class="facebook btn  white-text" href="https://es-la.facebook.com/">Facebook</a></p>
+                    </section>
+                    </div>
+                </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container center-align">
+            © 2016 Empresa contable 
+            </div>
+          </div>
+        </footer>
+        {% endblock footer %}
+
+      {% block modal %}
+      <div id="modal1" class="modal bottom-sheet">
+        <div class="modal-content center-align">
+          <h4>Contabilidad </h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+          <a href="{% url 'principal:formulario' %}" class=" modal-action modal-close waves-effect waves-green btn">Deseo ver la solicitud de servicio</a>
+        </div>
+      </div>
+
+      <div id="modal2" class="modal bottom-sheet">
+        <div class="modal-content center-align">
+          <h4>Finanzas </h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+          <a href="{% url 'principal:formulario' %}" class=" modal-action modal-close waves-effect waves-green btn">Deseo ver la solicitud de servicio</a>
+        </div>
+      </div>
+
+        <div id="modal3" class="modal bottom-sheet">
+        <div class="modal-content center-align">
+          <h4>Consultoria </h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+          <a href="{% url 'principal:formulario' %}" class=" modal-action modal-close waves-effect waves-green btn">Deseo ver la solicitud de servicio</a>
+        </div>
+      </div>
+
+      <div id="modal4" class="modal bottom-sheet">
+        <div class="modal-content center-align">
+          <h4>Auditoria </h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat.</p>
+          <a href="{% url 'principal:formulario' %}" class=" modal-action modal-close waves-effect waves-green btn">Deseo ver la solicitud de servicio</a>
+        </div>
+      </div>
+      {% endblock modal %}
+          
+    
+    {% block js %}
+    <script src="{% static 'js/jquery-3.1.0.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script> 
+    <script src="{% static 'js/pagina/pagina.js' %}"></script>
+    {% endblock js %}
+    
+
+
+</body>
+</html>

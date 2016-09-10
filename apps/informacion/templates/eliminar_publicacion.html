@@ -1,0 +1,62 @@
+{% extends 'inicio.html' %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang='ES'>
+{% block css %}
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/materialize.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/informacion/publicacion3.css' %}">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300" rel="stylesheet">
+	<title></title>
+</head>
+{% endblock css %}
+<body>
+
+	{% block navbar %}
+		{{block.super}}
+	{% endblock navbar %}
+
+	{% block slider %}
+	{% endblock slider%}
+
+	{% block servicio %}
+	{% autoescape on %}
+		<section class="teal accent-4 banner center-align"><br>
+          <h3 class="white-text banner"> Eliminar Publicaciones </h3>
+      </section><br>
+
+     <article class="center-align">
+	 <div class="row">
+            <div class=" col s10 offset-s1 m6 offset-m3 l6 offset-l3 card"><br>
+            		<h5>Modifique su publicacion</h5>
+             <div class="input-field col s10 offset-s1 m8 offset-m2 l8 offset-l2">
+			 <form method="POST", action="{% url 'principal:eliminar_publicacion' form.id %}">
+			{% csrf_token %}
+			<p> desea eliminar este registro ( {{form.titulo}} ) ? </p>
+			<p> nota: al borrar los datos, no se recuperaran de nuevo </p>
+			{{form.as_p}}<br>
+			<button type="submit" class="btn red accent-3"><i class="left material-icons">queue</i>Eliminar</button>
+			<a href="{% url 'principal:adm_publicacion' %}" class="btn teal accent-4 white-text"><i class="left material-icons">swap_horiz
+</i>Volver</a>
+			</form><br>      								
+        	</div>
+    	</div>
+    </div>
+    </article>
+	{% endautoescape %}
+	{% endblock servicio %}
+
+	{% block footer %}
+	{% endblock footer %}
+
+	{% block modal %}
+	{% endblock modal %}
+
+{% block js %}
+	{{block.super}}
+{% endblock js %}
+</body>
+</html>
